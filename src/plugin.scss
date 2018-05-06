@@ -1,0 +1,79 @@
+// Sass for videojs-wind-buttons
+
+.video-js {
+
+  // This class is added to the video.js element by the plugin by default.
+  &.vjs-wind-buttons {
+		font-family: 'Material Icons';
+    cursor: pointer;
+		position: absolute;
+		top: 50%;
+		left: 40%;
+		margin-top: -0.75em;
+		margin-left: -1.5em;
+
+    &.skip-back::before {
+      content: '\e042';
+    }
+    &.skip-back.skip-10::before {
+      content: '\e059';
+    }
+    &.skip-back.skip-5::before {
+      content: '\e05b';
+    }
+    &.skip-back.skip-30::before {
+      content: '\e05a';
+    }
+    &.skip-forward::before {
+      content: '\e5d5';
+    }
+    &.skip-forward.skip-10::before {
+      content: '\e056';
+    }
+    &.skip-forward.skip-5::before {
+      content: '\e058';
+    }
+    &.skip-forward.skip-30::before {
+      content: '\e057';
+    }
+  }
+  &.vjs-v6 {
+    .vjs-wind-button {
+      &.skip-back::before,
+      &.skip-back.skip-10::before,
+      &.skip-back.skip-5::before,
+      &.skip-back.skip-30::before,
+      &.skip-forward::before,
+      &.skip-forward.skip-10::before,
+      &.skip-forward.skip-5::before,
+      &.skip-forward.skip-30::before {
+        content: none;
+      }
+
+      &.skip-back .vjs-icon-placeholder::before {
+        content: '\e042';
+      }
+      &.skip-back.skip-10 .vjs-icon-placeholder::before {
+        content: '\e059';
+      }
+      &.skip-back.skip-5 .vjs-icon-placeholder::before {
+        content: '\e05b';
+      }
+      &.skip-back.skip-30 .vjs-icon-placeholder::before {
+        content: '\e05a';
+      }
+      &.skip-forward .vjs-icon-placeholder::before {
+        content: '\e5d5';
+      }
+      &.skip-forward.skip-10 .vjs-icon-placeholder::before {
+        content: '\e056';
+      }
+      &.skip-forward.skip-5 .vjs-icon-placeholder::before {
+        content: '\e058';
+      }
+      &.skip-forward.skip-30 .vjs-icon-placeholder::before {
+        content: '\e057';
+      }
+    }
+  }
+}
