@@ -1,0 +1,1 @@
+# videojs-wind-buttons
