@@ -13,7 +13,7 @@ export default {
   name: 'videojsWindButtons',
   input: 'src/plugin.js',
   output: {
-    file: 'dist/videojs-wind-buttons.js',
+    file: 'dist/videojs-seek-buttons-phone.js',
     format: 'umd'
   },
   external: [

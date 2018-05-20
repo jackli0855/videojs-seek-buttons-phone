@@ -15,7 +15,7 @@ QUnit.test('the environment is sane', function(assert) {
   assert.strictEqual(typeof plugin, 'function', 'plugin is a function');
 });
 
-QUnit.module('videojs-wind-buttons', {
+QUnit.module('videojs-seek-buttons-phone', {
 
   beforeEach() {
 
@@ -43,7 +43,7 @@ QUnit.test('registers itself with video.js', function(assert) {
   assert.strictEqual(
     typeof Player.prototype.windButtons,
     'function',
-    'videojs-wind-buttons plugin was registered'
+    'videojs-seek-buttons-phone plugin was registered'
   );
 
   this.player.windButtons();

@@ -12,10 +12,10 @@ export default {
   name: 'videojsWindButtons',
   input: 'src/plugin.js',
   output: [{
-    file: 'dist/videojs-wind-buttons.cjs.js',
+    file: 'dist/videojs-seek-buttons-phone.cjs.js',
     format: 'cjs'
   }, {
-    file: 'dist/videojs-wind-buttons.es.js',
+    file: 'dist/videojs-seek-buttons-phone.es.js',
     format: 'es'
   }],
   external: [

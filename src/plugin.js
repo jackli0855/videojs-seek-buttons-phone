@@ -1,6 +1,9 @@
 import videojs from 'video.js';
 import {version as VERSION} from '../package.json';
 
+const Button = videojs.getComponent('Button');
+const Component = videojs.getComponent('Component');
+
 // Default options for the plugin.
 const defaults = {};
 
@@ -23,25 +26,25 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
  *           A plain object containing options for the plugin.
  */
 const onPlayerReady = (player, options) => {
-  player.addClass('vjs-wind-buttons');
+  player.addClass('vjs-seek-buttons');
   if (options.forward && options.forward > 0) {
-    player.windForward = player.addChild('windButton', {
+    player.seekButtonForward = player.addChild('seekButton', {
       direction: 'forward',
       seconds: options.forward
     });
     player.el().insertBefore(
-      player.windForward.el(),
+      player.seekButtonForward.el(),
       player.bigPlayButton.el().nextSibling
     );
   }
 
   if (options.back && options.back > 0) {
-    player.windBack = player.addChild('windButton', {
+    player.seekButtonBack = player.addChild('seekButton', {
       direction: 'back',
       seconds: options.back
     });
     player.el().insertBefore(
-      player.windBack.el(),
+      player.seekButtonBack.el(),
       player.bigPlayButton.el()
     );
   }
@@ -55,11 +58,11 @@ const onPlayerReady = (player, options) => {
  * depending on how the plugin is invoked. This may or may not be important
  * to you; if not, remove the wait for "ready"!
  *
- * @function windButtons
+ * @function seekButtons
  * @param    {Object} [options={}]
  *           An object of options left to the plugin author to define.
  */
-const windButtons = function(options) {
+const seekButtons = function(options) {
   this.ready(() => {
     onPlayerReady(this, videojs.mergeOptions(defaults, options));
   });
@@ -73,7 +76,7 @@ const windButtons = function(options) {
  * @extends Button
  * @class WindToggle
  */
-class WindButton extends Button {
+class SeekButton extends Button {
   constructor(player, options) {
     super(player, options);
     if (this.options_.direction === 'forward') {
@@ -97,7 +100,7 @@ class WindButton extends Button {
        So you could have a generic icon for "skip back" and a more
        specific one for "skip back 30 seconds"
     */
-    return `vjs-wind-button skip-${this.options_.direction} ` +
+    return `vjs-seek-button skip-${this.options_.direction} ` +
       `skip-${this.options_.seconds} ${super.buildCSSClass()}`;
   }
 
@@ -112,12 +115,12 @@ class WindButton extends Button {
   }
 }
 
-Component.registerComponent('WindButton', WindButton);
+Component.registerComponent('SeekButton', SeekButton);
 
 // Register the plugin with video.js.
-registerPlugin('windButtons', windButtons);
+registerPlugin('seekButtons', seekButtons);
 
 // Include the version number.
-windButtons.VERSION = VERSION;
+seekButtons.VERSION = VERSION;
 
-export default windButtons;
+export default seekButtons;

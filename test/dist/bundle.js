@@ -102,6 +102,10 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
+var Button = videojs.getComponent('Button');
+var Component = videojs.getComponent('Component');
+
+// Default options for the plugin.
 var defaults = {};
 
 // Cross-compatibility for Video.js 5 and 6.
@@ -123,21 +127,21 @@ var registerPlugin = videojs.registerPlugin || videojs.plugin;
  *           A plain object containing options for the plugin.
  */
 var onPlayerReady = function onPlayerReady(player, options) {
-  player.addClass('vjs-wind-buttons');
+  player.addClass('vjs-seek-buttons');
   if (options.forward && options.forward > 0) {
-    player.windForward = player.addChild('windButton', {
+    player.seekButtonForward = player.addChild('seekButton', {
       direction: 'forward',
       seconds: options.forward
     });
-    player.el().insertBefore(player.windForward.el(), player.bigPlayButton.el().nextSibling);
+    player.el().insertBefore(player.seekButtonForward.el(), player.bigPlayButton.el().nextSibling);
   }
 
   if (options.back && options.back > 0) {
-    player.windBack = player.addChild('windButton', {
+    player.seekButtonBack = player.addChild('seekButton', {
       direction: 'back',
       seconds: options.back
     });
-    player.el().insertBefore(player.windBack.el(), player.bigPlayButton.el());
+    player.el().insertBefore(player.seekButtonBack.el(), player.bigPlayButton.el());
   }
 };
 
@@ -149,11 +153,11 @@ var onPlayerReady = function onPlayerReady(player, options) {
  * depending on how the plugin is invoked. This may or may not be important
  * to you; if not, remove the wait for "ready"!
  *
- * @function windButtons
+ * @function seekButtons
  * @param    {Object} [options={}]
  *           An object of options left to the plugin author to define.
  */
-var windButtons = function windButtons(options) {
+var seekButtons = function seekButtons(options) {
   var _this = this;
 
   this.ready(function () {
@@ -170,11 +174,11 @@ var windButtons = function windButtons(options) {
  * @class WindToggle
  */
 
-var WindButton = function (_Button) {
-  inherits(WindButton, _Button);
+var SeekButton = function (_Button) {
+  inherits(SeekButton, _Button);
 
-  function WindButton(player, options) {
-    classCallCheck(this, WindButton);
+  function SeekButton(player, options) {
+    classCallCheck(this, SeekButton);
 
     var _this2 = possibleConstructorReturn(this, _Button.call(this, player, options));
 
@@ -186,7 +190,7 @@ var WindButton = function (_Button) {
     return _this2;
   }
 
-  WindButton.prototype.buildCSSClass = function buildCSSClass() {
+  SeekButton.prototype.buildCSSClass = function buildCSSClass() {
     /* Each button will have the classes:
        `vjs-seek-button`
        `skip-forward` or `skip-back`
@@ -194,10 +198,10 @@ var WindButton = function (_Button) {
        So you could have a generic icon for "skip back" and a more
        specific one for "skip back 30 seconds"
     */
-    return 'vjs-wind-button skip-' + this.options_.direction + ' ' + ('skip-' + this.options_.seconds + ' ' + _Button.prototype.buildCSSClass.call(this));
+    return 'vjs-seek-button skip-' + this.options_.direction + ' ' + ('skip-' + this.options_.seconds + ' ' + _Button.prototype.buildCSSClass.call(this));
   };
 
-  WindButton.prototype.handleClick = function handleClick() {
+  SeekButton.prototype.handleClick = function handleClick() {
     var now = this.player_.currentTime();
 
     if (this.options_.direction === 'forward') {
@@ -207,16 +211,16 @@ var WindButton = function (_Button) {
     }
   };
 
-  return WindButton;
+  return SeekButton;
 }(Button);
 
-Component.registerComponent('WindButton', WindButton);
+Component.registerComponent('SeekButton', SeekButton);
 
 // Register the plugin with video.js.
-registerPlugin('windButtons', windButtons);
+registerPlugin('seekButtons', seekButtons);
 
 // Include the version number.
-windButtons.VERSION = version;
+seekButtons.VERSION = version;
 
 var Player = videojs.getComponent('Player');
 
@@ -224,10 +228,10 @@ QUnit.test('the environment is sane', function (assert) {
   assert.strictEqual(_typeof(Array.isArray), 'function', 'es5 exists');
   assert.strictEqual(typeof sinon === 'undefined' ? 'undefined' : _typeof(sinon), 'object', 'sinon exists');
   assert.strictEqual(typeof videojs === 'undefined' ? 'undefined' : _typeof(videojs), 'function', 'videojs exists');
-  assert.strictEqual(typeof windButtons === 'undefined' ? 'undefined' : _typeof(windButtons), 'function', 'plugin is a function');
+  assert.strictEqual(typeof seekButtons === 'undefined' ? 'undefined' : _typeof(seekButtons), 'function', 'plugin is a function');
 });
 
-QUnit.module('videojs-wind-buttons', {
+QUnit.module('videojs-seek-buttons-phone', {
   beforeEach: function beforeEach() {
 
     // Mock the environment's timers because certain things - particularly
@@ -250,7 +254,7 @@ QUnit.module('videojs-wind-buttons', {
 QUnit.test('registers itself with video.js', function (assert) {
   assert.expect(2);
 
-  assert.strictEqual(_typeof(Player.prototype.windButtons), 'function', 'videojs-wind-buttons plugin was registered');
+  assert.strictEqual(_typeof(Player.prototype.windButtons), 'function', 'videojs-seek-buttons-phone plugin was registered');
 
   this.player.windButtons();
 

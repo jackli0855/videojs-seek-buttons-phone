@@ -1,16 +1,16 @@
-# videojs-wind-buttons
+# videojs-seek-buttons-phone
 
 
 
 ## Installation
 
 ```sh
-npm install --save @wind-buttons/videojs-wind-buttons
+npm install --save @wind-buttons/videojs-seek-buttons-phone
 ```
 
 ## Usage
 
-To include videojs-wind-buttons on your website or web application, use any of the following methods.
+To include videojs-seek-buttons-phone on your website or web application, use any of the following methods.
 
 ### `<script>` Tag
 
@@ -18,7 +18,7 @@ This is the simplest case. Get the script in whatever way you prefer and include
 
 ```html
 <script src="//path/to/video.min.js"></script>
-<script src="//path/to/videojs-wind-buttons.min.js"></script>
+<script src="//path/to/videojs-seek-buttons-phone.min.js"></script>
 <script>
   var player = videojs('my-video');
 
@@ -28,7 +28,7 @@ This is the simplest case. Get the script in whatever way you prefer and include
 
 ### Browserify/CommonJS
 
-When using with Browserify, install videojs-wind-buttons via npm and `require` the plugin as you would any other module.
+When using with Browserify, install videojs-seek-buttons-phone via npm and `require` the plugin as you would any other module.
 
 ```js
 var videojs = require('video.js');
@@ -36,7 +36,7 @@ var videojs = require('video.js');
 // The actual plugin function is exported by this module, but it is also
 // attached to the `Player.prototype`; so, there is no need to assign it
 // to a variable.
-require('@wind-buttons/videojs-wind-buttons');
+require('@wind-buttons/videojs-seek-buttons-phone');
 
 var player = videojs('my-video');
 
@@ -48,7 +48,7 @@ player.windButtons();
 When using with RequireJS (or another AMD library), get the script in whatever way you prefer and `require` the plugin as you normally would:
 
 ```js
-require(['video.js', '@wind-buttons/videojs-wind-buttons'], function(videojs) {
+require(['video.js', '@wind-buttons/videojs-seek-buttons-phone'], function(videojs) {
   var player = videojs('my-video');
 
   player.windButtons();

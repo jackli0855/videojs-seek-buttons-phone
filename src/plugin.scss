@@ -1,9 +1,12 @@
-// Sass for videojs-wind-buttons
+// Sass for videojs-seek-buttons-phone
+
+// USing material icon font
+@import url(https://fonts.googleapis.com/css?family=Material+Icons);
 
 .video-js {
 
   // This class is added to the video.js element by the plugin by default.
-  &.vjs-wind-buttons {
+  &.vjs-seek-button {
     font-family: 'Material Icons';
     cursor: pointer;
     position: absolute;
@@ -38,7 +41,7 @@
     }
   }
   &.vjs-v6 {
-    .vjs-wind-button {
+    .vjs-seek-button {
       &.skip-back::before,
       &.skip-back.skip-10::before,
       &.skip-back.skip-5::before,

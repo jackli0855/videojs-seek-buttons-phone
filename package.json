@@ -1,9 +1,9 @@
 {
-  "name": "@wind-buttons/videojs-wind-buttons",
+  "name": "@wind-buttons/videojs-seek-buttons-phone",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/videojs-wind-buttons.cjs.js",
-  "module": "dist/videojs-wind-buttons.es.js",
+  "main": "dist/videojs-seek-buttons-phone.cjs.js",
+  "module": "dist/videojs-seek-buttons-phone.es.js",
   "generator-videojs-plugin": {
     "version": "5.2.1"
   },
@@ -11,13 +11,13 @@
     "prebuild": "npm run clean",
     "build": "npm-run-all -p build:*",
     "build:css": "npm-run-all build:css:sass build:css:bannerize",
-    "build:css:bannerize": "bannerize dist/videojs-wind-buttons.css --banner=scripts/banner.ejs",
-    "build:css:sass": "node-sass src/plugin.scss dist/videojs-wind-buttons.css --output-style=compressed --linefeed=lf",
+    "build:css:bannerize": "bannerize dist/videojs-seek-buttons-phone.css --banner=scripts/banner.ejs",
+    "build:css:sass": "node-sass src/plugin.scss dist/videojs-seek-buttons-phone.css --output-style=compressed --linefeed=lf",
     "build:js": "npm-run-all build:js:rollup-modules build:js:rollup-umd build:js:bannerize build:js:uglify",
-    "build:js:bannerize": "bannerize dist/videojs-wind-buttons.js --banner=scripts/banner.ejs",
+    "build:js:bannerize": "bannerize dist/videojs-seek-buttons-phone.js --banner=scripts/banner.ejs",
     "build:js:rollup-modules": "rollup -c scripts/modules.rollup.config.js",
     "build:js:rollup-umd": "rollup -c scripts/umd.rollup.config.js",
-    "build:js:uglify": "uglifyjs dist/videojs-wind-buttons.js --comments --mangle --compress  -o dist/videojs-wind-buttons.min.js",
+    "build:js:uglify": "uglifyjs dist/videojs-seek-buttons-phone.js --comments --mangle --compress  -o dist/videojs-seek-buttons-phone.min.js",
     "build:lang": "vjslang --dir dist/lang",
     "build:test": "rollup -c scripts/test.rollup.config.js",
     "clean": "rimraf dist test/dist",
@@ -31,7 +31,7 @@
     "version": "node scripts/version.js",
     "watch": "npm-run-all -p watch:*",
     "watch:css": "npm-run-all build:css:sass watch:css:sass",
-    "watch:css:sass": "node-sass src/plugin.scss dist/videojs-wind-buttons.css --output-style=compressed --linefeed=lf --watch src/**/*.scss",
+    "watch:css:sass": "node-sass src/plugin.scss dist/videojs-seek-buttons-phone.css --output-style=compressed --linefeed=lf --watch src/**/*.scss",
     "watch:js-modules": "rollup -c scripts/modules.rollup.config.js -w",
     "watch:js-umd": "rollup -c scripts/umd.rollup.config.js -w",
     "watch:test": "rollup -c scripts/test.rollup.config.js -w",
@@ -100,6 +100,6 @@
     "uglify-js": "^3.3.5",
     "videojs-languages": "^1.0.0",
     "videojs-standard": "^6.0.1",
-		"watchify": "^3.6.0"
+    "watchify": "^3.6.0"
   }
 }
